@@ -132,7 +132,7 @@ public class PembuatPolaSegitiga
                 pps.segitiga_sama_kaki ();
                 break;
             default:
-                System.out.println("Input error");
+                System.out.println ("Input error");
                 break;
         }
     }
