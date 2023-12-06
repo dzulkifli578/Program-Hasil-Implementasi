@@ -1,20 +1,24 @@
 while True:
-    print ("========== Konversi Suhu ==========")
+    print ("========== Konversi Suhu ========== ")
     print ("C = Celsius")
     print ("F = Fahrenheit")
+    print ("K = Keluar")
     satuan = input ("Satuan mana yang ingin dikonversi?: ")
 
-    if satuan == 'C' or satuan == "c":
+    if satuan.lower () == 'c':
         suhu = float (input ("Masukkan suhu dalam satuan Fahrenheit: "))
-        hasil = (1.8 * suhu) + 32
-        print(f"Suhu: {hasil:.2f} derajat Celsius")
+        fahrenheit_ke_celsius = (suhu - 32) * 5 / 9
+        print (f"Suhu: {fahrenheit_ke_celsius :.2f} derajat Celsius")
+    
+    elif satuan.lower () == 'f':
+        suhu = float (input ("Masukkan suhu dalam satuan Celsius: "))
+        celsius_ke_fahrenheit = (suhu * 9 / 5) + 32
+        print (f"Suhu: {celsius_ke_fahrenheit :.2f} derajat Fahrenheit")
+    
+    elif satuan.lower () == 'k':
+        print ("Terima kasih telah menggunakan program ini!")
         break
     
-    elif satuan == 'F' or satuan == "f":
-        suhu = float (input ("Masukkan suhu dalam satuan Celsius: "))
-        hasil = (suhu - 32) / 1.8
-        print(f"Suhu: {hasil:.2f} derajat Fahrenheit")
-        break
-
     else:
-        print("Masukkan antara C atau F")
+        print ("Masukkan antara C|F|K")
+        continue

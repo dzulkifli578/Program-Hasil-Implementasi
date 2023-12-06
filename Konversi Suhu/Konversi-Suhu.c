@@ -7,37 +7,38 @@ int main()
 
     do
     {
-        printf ("========== Konversi Suhu ==========\n");
-        printf ("C = Celsius\n");
-        printf ("F = Fahrenheit\n");
+        puts ("========== Konversi Suhu ==========");
+        puts ("C = Celsius");
+        puts ("F = Fahrenheit");
+        puts ("K = Keluar");
         printf ("Satuan mana yang ingin dikonversi?: ");
-        scanf (" %c", &satuan);
+        scanf ("%s", &satuan);
 
         if (satuan == 'C' || satuan == 'c')
         {
             printf ("Masukkan suhu dalam satuan Fahrenheit: ");
             scanf ("%f", &suhu);
 
-            printf ("Suhu: %.2f derajat Celsius", (1.8 * suhu) + 32);
-            break;
+            printf ("Suhu: %.2f derajat Celsius\n", (suhu - 32) * 5 / 9);
         }
-
-        if (satuan == 'F' || satuan == 'f')
+        else if (satuan == 'F' || satuan == 'f')
         {
             printf ("Masukkan suhu dalam satuan Celsius: ");
             scanf ("%f", &suhu);
 
-            printf ("Suhu: %.2f derajat Fahrenheit", (suhu - 32) / 1.8);
+            printf ("Suhu: %.2f derajat Fahrenheit\n", (suhu * 9 / 5) + 32);
+        }
+        else if (satuan == 'K' || satuan == 'k')
+        {
+            puts ("Terima kasih telah menggunakan program ini!");
             break;
         }
-        
         else
         {
-            printf("Masukkan antara C atau F\n");
-            break;
+            puts ("Masukkan antara C|F|K");
+            continue;
         }
-
-    } while (satuan != 'F' && satuan != 'f' && satuan != 'C' && satuan != 'c');
+    } while (1);
 
     return 0;
 }
