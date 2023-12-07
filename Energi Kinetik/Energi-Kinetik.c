@@ -8,17 +8,15 @@ float hasil_kecepatan ();
 int main ()
 {
     unsigned short pilihan = 0;
-
     float massa = 0, kecepatan = 0, energi_kinetik = 0;
-
-    printf ("========== Penghitung Energi Kinetik ==========\n");
 
     do
     {
-        printf ("1. Mencari energi kinetik\n");
-        printf ("2. Mencari massa\n");
-        printf ("3. Mencari kecepatan\n");
-        printf ("4. Keluar\n");
+        puts ("========== Penghitung Energi Kinetik ==========");
+        puts ("1. Mencari energi kinetik");
+        puts ("2. Mencari massa");
+        puts ("3. Mencari kecepatan");
+        puts ("4. Keluar");
         printf ("Pilih salah satu: ");
         scanf ("%hu", &pilihan);
 
@@ -37,13 +35,12 @@ int main ()
                 printf ("Kecepatan: %f m/s\n", kecepatan);
                 break;
             case 4:
-                printf ("Terima kasih telah menggunakan program ini\n");
+                printf ("Terima kasih telah menggunakan program ini!\n");
                 break;
             default:
                 printf ("Input error\n");
-                break;
         }
-    } while (pilihan < 1 || pilihan > 4);
+    } while (pilihan != 4);
 
     return 0;
 }

@@ -1,14 +1,13 @@
 import math
 
-def main():
+def main ():
     pilihan = 0
     massa = 0
     kecepatan = 0
     energi_kinetik = 0
 
-    print ("========== Penghitung Energi Kinetik ==========")
-
     while True:
+        print ("========== Penghitung Energi Kinetik ==========")
         print ("1. Mencari energi kinetik")
         print ("2. Mencari massa")
         print ("3. Mencari kecepatan")
@@ -18,17 +17,14 @@ def main():
         if pilihan == 1:
             energi_kinetik = hasil_energi_kinetik ()
             print (f"Energi kinetik: {energi_kinetik} Joule")
-            break
         elif pilihan == 2:
             massa = hasil_massa ()
             print (f"Massa: {massa} kg")
-            break
         elif pilihan == 3:
             kecepatan = hasil_kecepatan ()
             print (f"Kecepatan: {kecepatan} m/s")
-            break
         elif pilihan == 4:
-            print ("Terima kasih telah menggunakan program ini")
+            print ("Terima kasih telah menggunakan program ini!")
             break
         else:
             print("Input error")

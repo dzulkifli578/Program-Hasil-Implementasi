@@ -1,20 +1,18 @@
 #include <iostream>
 #include <cmath>
 
-float hasil_energi_kinetik ();
-float hasil_massa ();
-float hasil_kecepatan ();
+float energi_kinetik ();
+float massa ();
+float kecepatan ();
 
 int main ()
 {
     unsigned short pilihan = 0;
-
     float massa = 0, kecepatan = 0, energi_kinetik = 0;
-
-    std::cout << "========== Penghitung Energi Kinetik ==========\n";
 
     do
     {
+        std::cout << "========== Penghitung Energi Kinetik ==========\n";
         std::cout << "1. Mencari energi kinetik\n";
         std::cout << "2. Mencari massa\n";
         std::cout << "3. Mencari kecepatan\n";
@@ -25,28 +23,27 @@ int main ()
         switch (pilihan)
         {
             case 1:
-                energi_kinetik = hasil_energi_kinetik ();
-                std::cout << "Energi kinetik: " << energi_kinetik << " Joule";
+                energi_kinetik = energi_kinetik ();
+                std::cout << "Energi kinetik: " << energi_kinetik << " Joule\n";
                 break;
             case 2:
-                massa = hasil_massa ();
-                std::cout << "Massa: " << massa << " kg";
+                massa = massa ();
+                std::cout << "Massa: " << massa << " kg\n";
                 break;
             case 3:
-                kecepatan = hasil_kecepatan ();
-                std::cout << "Kecepatan: " << kecepatan << " m/s";
+                kecepatan = kecepatan ();
+                std::cout << "Kecepatan: " << kecepatan << " m/s\n";
                 break;
             case 4:
-                std::cout << "Terima kasih telah menggunakan program ini";
+                std::cout << "Terima kasih telah menggunakan program ini!\n";
                 break;
             default:
                 std::cout << "Input error\n";
-                break;
         }
-    } while (pilihan < 1 || pilihan > 4);
+    } while (pilihan != 4);
 }
 
-float hasil_energi_kinetik ()
+float energi_kinetik ()
 {
     float massa = 0, kecepatan = 0;
 
@@ -59,7 +56,7 @@ float hasil_energi_kinetik ()
     return 0.5 * massa * pow (kecepatan, 2);
 }
 
-float hasil_massa ()
+float massa ()
 {
     float energi_kinetik = 0, kecepatan = 0;
 
@@ -72,7 +69,7 @@ float hasil_massa ()
     return (2 * energi_kinetik) / pow (kecepatan, 2);
 }
 
-float hasil_kecepatan ()
+float kecepatan ()
 {
     float energi_kinetik = 0, massa = 0;
 
@@ -82,5 +79,5 @@ float hasil_kecepatan ()
     std::cout << "Masukkan massa (satuan kg): ";
     std::cin >> massa;
 
-    return sqrt((2 * energi_kinetik) / massa);
+    return sqrt ((2 * energi_kinetik) / massa);
 }
