@@ -4,7 +4,7 @@
 int main ()
 {
     int *ukuran = NULL;
-    ukuran = malloc (sizeof(int));
+    ukuran = malloc (sizeof (int));
 
     printf ("Masukkan batas deret Fibonacci: ");
     scanf ("%i", ukuran);
