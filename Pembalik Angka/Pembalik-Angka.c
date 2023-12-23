@@ -13,7 +13,7 @@ int main ()
     puts ("Masukkan daftar angka:");
     for (int i = 0; i < batas; i++)
     {
-        array [i] = malloc (100 * sizeof (char)); // Ukuran maksimal string
+        array [i] = malloc (100 * sizeof (char));
         scanf ("%s", array [i]);
     }
 
