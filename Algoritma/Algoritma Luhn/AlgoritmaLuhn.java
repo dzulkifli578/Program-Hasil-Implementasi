@@ -6,14 +6,14 @@ public class AlgoritmaLuhn
     {
         Scanner scan = new Scanner (System.in);
 
-        int [] digit_angka = new int [17];
+        int [] digit_angka = new int [16];
         int hasil = 0;
 
         System.out.println ("Masukkan nomor kartu:");
         String digit = scan.nextLine ();
 
         scan.close ();
-        
+
         for (int i = 0; i < 16; i++)
         {
             digit_angka [i] = Character.getNumericValue (digit.charAt (i));

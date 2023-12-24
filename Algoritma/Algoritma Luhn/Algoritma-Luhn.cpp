@@ -3,7 +3,7 @@
 int main ()
 {
     std::string digit = "";
-    int digit_angka [17], hasil = 0;
+    int digit_angka [16], hasil = 0;
 
     std::cout << "Masukkan nomor kartu:\n";
     std::cin >> digit;
