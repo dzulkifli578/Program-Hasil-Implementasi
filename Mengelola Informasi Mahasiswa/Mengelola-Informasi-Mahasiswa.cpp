@@ -8,17 +8,29 @@ struct Mahasiswa
     double IPK = 0;
 };
 
-void input_daftar (int *terisi, Mahasiswa mahasiswaArray []);
-void tampilkan_daftar (int *terisi, Mahasiswa mahasiswaArray []);
-void cari_daftar (int *terisi, Mahasiswa mahasiswaArray []);
-void hapus_daftar (int *terisi, Mahasiswa mahasiswaArray []);
+void pilihan_pertama (int *terisi, Mahasiswa MahasiswaArray []);
+void pilihan_kedua (int *terisi, Mahasiswa MahasiswaArray []);
+void tampilkan_daftar (int *terisi, Mahasiswa MahasiswaArray []);
+void input_daftar (int *terisi, Mahasiswa MahasiswaArray []);
+void cari_daftar (int *terisi, Mahasiswa MahasiswaArray []);
+void hapus_daftar (int *terisi, Mahasiswa MahasiswaArray []);
 
 int main ()
 {
+    int terisi = 0;
     const int jumlah_mahasiswa = 1000;
-    int terisi = 0, pilihan = 0;
-    Mahasiswa mahasiswaArray [jumlah_mahasiswa];
+    Mahasiswa MahasiswaArray [jumlah_mahasiswa];
     
+    if (terisi == 0) pilihan_pertama (&terisi, MahasiswaArray);
+    if (terisi != 0) pilihan_kedua (&terisi, MahasiswaArray);
+
+    return 0;
+}
+
+void pilihan_pertama (int *terisi, Mahasiswa MahasiswaArray [])
+{
+    int pilihan = 0;
+
     do
     {
         std::cout << "========== DAFTAR MAHASISWA ==========\n";
@@ -30,19 +42,24 @@ int main ()
 
         std::cin.clear ();
         fflush (stdin);
-            
+                    
         switch (pilihan)
         {
-            case 1: input_daftar (&terisi, mahasiswaArray);
+            case 1: input_daftar (terisi, MahasiswaArray);
                     break;
             case 2: std::cout << "Terima kasih telah menggunakan program ini!\n";
-                    return 0;
+                    break;
             default: std::cout << "Input error\n";
-                     break;
-            }
-    } while (terisi == 0 && pilihan != 2);
+        }
+    } while (*terisi == 0 && pilihan != 2);
+}
+
+void pilihan_kedua (int *terisi, Mahasiswa MahasiswaArray [])
+{
+    int pilihan = 0;
+
     do
-    {
+    {    
         std::cout << "========== DAFTAR MAHASISWA ==========\n";
         std::cout << "1. Tampilkan\n";
         std::cout << "2. Masukkan\n";
@@ -55,28 +72,27 @@ int main ()
 
         std::cin.clear ();
         fflush (stdin);
-            
+                        
         switch (pilihan)
         {
-            case 1: tampilkan_daftar (&terisi, mahasiswaArray);
+            case 1: tampilkan_daftar (terisi, MahasiswaArray);
                     break;
-            case 2: input_daftar (&terisi, mahasiswaArray);
+            case 2: input_daftar (terisi, MahasiswaArray);
                     break;
-            case 3: cari_daftar (&terisi, mahasiswaArray);
+            case 3: cari_daftar (terisi, MahasiswaArray);
                     break;
-            case 4: hapus_daftar (&terisi, mahasiswaArray);
+            case 4: hapus_daftar (terisi, MahasiswaArray);
                     break;
             case 5: std::cout << "Terima kasih telah menggunakan program ini!\n";
-                    return 0;
+                    break;
             default: std::cout << "Input error\n";
-                     break;
+                    break;
         }
-    } while (terisi != 0 && pilihan != 5);
-    
-    return 0;
+    } while (*terisi != 0 && pilihan >= 1 && pilihan < 5);
+    main ();
 }
 
-void tampilkan_daftar (int *terisi, Mahasiswa mahasiswaArray [])
+void tampilkan_daftar (int *terisi, Mahasiswa MahasiswaArray [])
 {
     std::cout << "========== INFORMASI MAHASISWA ==========\n";
 
@@ -87,18 +103,18 @@ void tampilkan_daftar (int *terisi, Mahasiswa mahasiswaArray [])
     else
     {
         for (int i = 0; i < *terisi; i++)
-            {
-                std::cout << "-----------------------------------------\n";
-                std::cout << "Nama      : " << mahasiswaArray [i].nama << "\n";
-                std::cout << "NPM       : " << mahasiswaArray [i].NPM << "\n";
-                std::cout << "Jurusan   : " << mahasiswaArray [i].jurusan << "\n";
-                std::cout << "IPK       : " << mahasiswaArray [i].IPK << "\n";
-                std::cout << "-----------------------------------------\n";
-            }
+        {
+            std::cout << "-----------------------------------------\n";
+            std::cout << "Nama      : " << MahasiswaArray [i].nama << "\n";
+            std::cout << "NPM       : " << MahasiswaArray [i].NPM << "\n";
+            std::cout << "Jurusan   : " << MahasiswaArray [i].jurusan << "\n";
+            std::cout << "IPK       : " << MahasiswaArray [i].IPK << "\n";
+            std::cout << "-----------------------------------------\n";
+        }
     }
 }
 
-void input_daftar (int *terisi, Mahasiswa mahasiswaArray [])
+void input_daftar (int *terisi, Mahasiswa MahasiswaArray [])
 {
     int input = 0;
 
@@ -110,17 +126,17 @@ void input_daftar (int *terisi, Mahasiswa mahasiswaArray [])
     {
         std::cout << "-----------------------------------------\n";
         std::cout << "Masukkan nama mahasiswa   : ";
-        std::getline (std::cin, mahasiswaArray [i].nama);
+        std::getline (std::cin, MahasiswaArray [i].nama);
 
         std::cout << "Masukkan NPM              : ";
-        std::cin >> mahasiswaArray [i].NPM;
+        std::cin >> MahasiswaArray [i].NPM;
         std::cin.ignore ();
 
         std::cout << "Masukkan nama jurusan     : ";
-        std::getline (std::cin, mahasiswaArray [i].jurusan);
+        std::getline (std::cin, MahasiswaArray [i].jurusan);
 
         std::cout << "Masukkan nilai IPK        : ";
-        std::cin >> mahasiswaArray [i].IPK;
+        std::cin >> MahasiswaArray [i].IPK;
         std::cin.ignore ();
         std::cout << "-----------------------------------------\n";
     }
@@ -128,7 +144,7 @@ void input_daftar (int *terisi, Mahasiswa mahasiswaArray [])
     *terisi += input;
 }
 
-void cari_daftar (int *terisi, Mahasiswa mahasiswaArray [])
+void cari_daftar (int *terisi, Mahasiswa MahasiswaArray [])
 {
     int input = 0;
 
@@ -141,13 +157,13 @@ void cari_daftar (int *terisi, Mahasiswa mahasiswaArray [])
 
         for (int i = 0; i < *terisi; i++)
         {
-            if (input == mahasiswaArray [i].NPM)
+            if (input == MahasiswaArray [i].NPM)
             {
                 std::cout << "-----------------------------------------\n";
-                std::cout << "Nama      : " << mahasiswaArray [i].nama << "\n";
-                std::cout << "NPM       : " << mahasiswaArray [i].NPM << "\n";
-                std::cout << "Jurusan   : " << mahasiswaArray [i].jurusan << "\n";
-                std::cout << "IPK       : " << mahasiswaArray [i].IPK << "\n";
+                std::cout << "Nama      : " << MahasiswaArray [i].nama << "\n";
+                std::cout << "NPM       : " << MahasiswaArray [i].NPM << "\n";
+                std::cout << "Jurusan   : " << MahasiswaArray [i].jurusan << "\n";
+                std::cout << "IPK       : " << MahasiswaArray [i].IPK << "\n";
                 std::cout << "-----------------------------------------\n";
                 break;
             }
@@ -156,7 +172,7 @@ void cari_daftar (int *terisi, Mahasiswa mahasiswaArray [])
     }
 }
 
-void hapus_daftar (int *terisi, Mahasiswa mahasiswaArray [])
+void hapus_daftar (int *terisi, Mahasiswa MahasiswaArray [])
 {
     int input = 0;
 
@@ -166,7 +182,7 @@ void hapus_daftar (int *terisi, Mahasiswa mahasiswaArray [])
     int indeks = -1;
     for (int i = 0; i < *terisi; i++)
     {
-        if (input == mahasiswaArray [i].NPM)
+        if (input == MahasiswaArray [i].NPM)
         {
             indeks = i;
             break;
@@ -176,14 +192,9 @@ void hapus_daftar (int *terisi, Mahasiswa mahasiswaArray [])
     if (indeks != -1)
     {
         for (int i = indeks; i < *terisi - 1; i++)
-        {
-            mahasiswaArray[i] = mahasiswaArray[i + 1];
-        }
-
+            MahasiswaArray[i] = MahasiswaArray[i + 1];
         (*terisi)--;
         std::cout << "Mahasiswa dengan NPM " << input << " telah dihapus.\n";
     }
     else std::cout << "Mahasiswa dengan NPM " << input << " tidak ditemukan.\n";
-
-    main ();
 }
