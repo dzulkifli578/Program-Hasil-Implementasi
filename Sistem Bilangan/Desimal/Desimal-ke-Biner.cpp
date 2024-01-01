@@ -17,9 +17,7 @@ int main ()
 
     std::cout << "Biner     : ";
     for (int i = biner.length () - 1; i >= 0; i--)
-    {
         std::cout << biner [i];
-    }
     
     return 0;
 }

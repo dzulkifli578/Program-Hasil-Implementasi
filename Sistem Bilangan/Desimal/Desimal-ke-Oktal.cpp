@@ -18,9 +18,7 @@ int main ()
 
     std::cout << "Oktal         : ";
     for (int i = oktal.length () - 1; i >= 0; i--)
-    {
         std::cout << oktal [i];
-    }
     
     return 0;
 }
