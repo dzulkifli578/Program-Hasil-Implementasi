@@ -3,130 +3,67 @@ import java.util.Random;
 
 public class BatuGuntingKertas
 {
-    Scanner scanner = new Scanner (System.in);
-    Random random = new Random ();
-
-    char pilihan_pemain ()
-    {
-        char pemain;
-        do
-        {
-            System.out.println ("===================");
-            System.out.println ("Batu_Gunting-Kertas");
-            System.out.println ("===================");
-            System.out.println ("'b' untuk batu");
-            System.out.println ("'g' untuk gunting");
-            System.out.println ("'k' untuk kertas");
-            System.out.println ("Silahkan pilih: ");
-            pemain = scanner.next ().charAt (0);
-
-        } while (pemain != 'b' && pemain != 'g' && pemain != 'k');
-
-        return pemain;
-    }
-        
-    char pilihan_komputer ()
-    {
-        int angka = random.nextInt (3) + 1;
-
-        switch (angka)
-        {
-            case 1: return 'b';
-            case 2: return 'g';
-            case 3: return 'k';
-        }
-
-        return ' ';
-    }
-
-    void tampilkan_pilihan (char pilihan)
-    {
-        switch (pilihan)
-        {
-            case 'b':
-                System.out.println ("Batu");
-                break;
-            case 'g':
-                System.out.println ("Gunting");
-                break;
-            case 'k':
-                System.out.println ("Kertas");
-                break;
-        }
-    }
-
-    void pemenang (char pemain, char komputer)
-    {
-        switch (pemain)
-        {
-            case 'b':
-                if (komputer == 'b')
-                {
-                    System.out.println ("Seri!");
-                }
-
-                else if (komputer == 'g')
-                {
-                    System.out.println ("Kamu menang!");
-                }
-
-                else if (komputer == 'k')
-                {
-                    System.out.println ("Kamu kalah!");
-                }
-                break;
-
-            case 'g':
-                if (komputer == 'b')
-                {
-                    System.out.println ("Kamu kalah!");
-                }
-
-                else if (komputer == 'g')
-                {
-                    System.out.println ("Seri!");
-                }
-
-                else if (komputer == 'k')
-                {
-                    System.out.println ("Kamu menang!");
-                }
-                break;
-
-            case 'k':
-                if (komputer == 'b')
-                {
-                    System.out.println ("Kamu menang!");
-                }
-
-                else if (komputer == 'g')
-                {
-                    System.out.println ("Kamu kalah!");
-                }
-
-                else if (komputer == 'k')
-                {
-                    System.out.println ("Seri!");
-                }
-                break;
-        }
-    }
+    static String [] choices = {"Batu", "Gunting", "Kertas"};
+    static int [][] results = {{0, 1, -1}, {-1, 0, 1}, {1, -1, 0}};
+    static Scanner scan = new Scanner (System.in);
+    static Random rand = new Random ();
 
     public static void main (String [] args)
     {
-        BatuGuntingKertas bgk = new BatuGuntingKertas ();
+        while (true)
+        {
+            int PlayerChoice, ComputerChoice;
+        
+            PlayerChoice = player ();
+            ComputerChoice = computer ();
+            challenge (PlayerChoice, ComputerChoice);
 
-        char pemain, komputer;
+            System.out.print ("\nIngin bermain lagi? (Y/y atau ketik sembarang untuk keluar): ");
+            char choice = scan.next ().charAt (0);
 
-        pemain = bgk.pilihan_pemain ();
-    
-        System.out.print ("Pilihanmu: ");
-        bgk.tampilkan_pilihan (pemain);
-    
-        komputer = bgk.pilihan_komputer ();
-        System.out.print ("Pilihan komputer: ");
-        bgk.tampilkan_pilihan (komputer);
-    
-        bgk.pemenang (pemain, komputer);
+            if (Character.toUpperCase (choice) != 'Y')
+            {
+                System.out.println ("Terima kasih telah bermain!");
+                break;
+            }
+        }
+    }
+
+    static int player ()
+    {
+        System.out.println ("====================");
+        System.out.println ("Batu-Gunting-Kertas");
+        System.out.println ("====================");
+        System.out.println ("1. Batu");
+        System.out.println ("2. Gunting");
+        System.out.println ("3. Kertas");
+        System.out.println ("====================");
+        System.out.print ("Pilih salah satu: ");
+        int PlayerChoice = scan.nextInt ();
+
+        while (PlayerChoice < 1 || PlayerChoice > 3)
+        {
+            System.out.println ("Masukkan hanya angka 1-3");
+            System.out.print ("Pilih salah satu: ");
+            PlayerChoice = scan.nextInt ();
+        }
+
+        System.out.printf ("\nPlayer memilih [%s]\n",choices [PlayerChoice - 1]);
+        return PlayerChoice;
+    }
+
+    static int computer ()
+    {
+        int ComputerChoice = rand.nextInt (3);
+        System.out.printf ("Komputer memilih [%s]\n", choices [ComputerChoice]);
+        return ComputerChoice;
+    }
+
+    static void challenge (int PlayerChoice, int ComputerChoice)
+    {
+        int result = results [PlayerChoice - 1][ComputerChoice];
+        if (result == 0) System.out.println ("Seri");
+        else if (result == 1) System.out.println ("Player Menang, Computer Kalah");
+        else System.out.println ("Player Kalah, Computer Menang");
     }
 }
