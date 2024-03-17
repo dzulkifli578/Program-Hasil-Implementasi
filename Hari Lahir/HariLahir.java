@@ -8,7 +8,8 @@ class ErrorMessage
     static final String NO_MONTH = "Tidak ada bulan nol atau negatif";
     static final String MAX_MONTH_DAY = "1 tahun maksimal 12 bulan, dan 1 bulan maksimal 31 hari";
     static final String POSITIVE_YEAR = "Masukan tahun hanya bilangan positif";
-    static final String MAX_DAY = "1 bulan maksimal 31 hari";}
+    static final String MAX_DAY = "1 bulan maksimal 31 hari";
+}
 
 class HariLahir
 {
@@ -26,28 +27,27 @@ class HariLahir
         CheckDate (day, month, year);
         CheckMonth (day, month, year);
         DefineDay (day, month, year);
-        
     }
 
-static void CheckDate (int day, int month, int year)
-{
-    if (day == 0 && month == 0 && year == 0)
-        System.out.println(ErrorMessage.FORMAT_EXAMPLE);
-    
-    if (day <= 0 || month <= 0 || (day > 31 && month > 12 && year <= 0))
+    static void CheckDate (int day, int month, int year)
     {
-        if (day > 31 && month > 12 && year <= 0)
-            System.out.println(ErrorMessage.MAX_MONTH_DAY + "\n" + ErrorMessage.POSITIVE_YEAR);
-        else if (day <= 0)
-            System.out.println(month <= 0 ? ErrorMessage.NO_DAY_OR_MONTH : ErrorMessage.NO_DAY);
-        else if (month <= 0)
-            System.out.println(ErrorMessage.NO_MONTH);
-        else
-            System.out.println(ErrorMessage.MAX_DAY + "\n" + ErrorMessage.POSITIVE_YEAR);
+        if (day == 0 && month == 0 && year == 0)
+            System.out.println (ErrorMessage.FORMAT_EXAMPLE);
+        
+        if (day <= 0 || month <= 0 || (day > 31 && month > 12 && year <= 0))
+        {
+            if (day > 31 && month > 12 && year <= 0)
+                System.out.println (ErrorMessage.MAX_MONTH_DAY + "\n" + ErrorMessage.POSITIVE_YEAR);
+            else if (day <= 0)
+                System.out.println (month <= 0 ? ErrorMessage.NO_DAY_OR_MONTH : ErrorMessage.NO_DAY);
+            else if (month <= 0)
+                System.out.println (ErrorMessage.NO_MONTH);
+            else
+                System.out.println (ErrorMessage.MAX_DAY + "\n" + ErrorMessage.POSITIVE_YEAR);
+        }
+        else if ((day > 31 && month <= 12) || (day <= 31 && month > 12))
+            System.out.println (ErrorMessage.MAX_DAY + "\n" + ErrorMessage.POSITIVE_YEAR);
     }
-    else if ((day > 31 && month <= 12) || (day <= 31 && month > 12))
-        System.out.println(ErrorMessage.MAX_DAY + "\n" + ErrorMessage.POSITIVE_YEAR);
-}
 
     static void CheckMonth (int day, int month, int year)
     {
@@ -84,7 +84,7 @@ static void CheckDate (int day, int month, int year)
     static void DefineDay (int day, int month, int year)
     {
         String [] days = {"Sabtu", "Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at"};
-        String [] months = {"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"};
+        String [] months = {"Januari", "Februari", "Maret", "April", "Mei", "Juni","Juli", "Agustus", "September", "Oktober", "November", "Desember"};
         int PrintDay = day;
 
         int PreviousYear = 0;
